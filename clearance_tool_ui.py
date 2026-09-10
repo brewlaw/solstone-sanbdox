@@ -526,7 +526,7 @@ if st.session_state["page"] == "contact":
             )
 
             btn_next = st.form_submit_button(
-                "PROCEED TO\nSEARCH TOOL", use_container_width=True
+                "PROCEED TO SEARCH TOOL", use_container_width=True
             )
 
         render_legal_disclaimer()
