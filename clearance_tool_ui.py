@@ -287,7 +287,7 @@ st.markdown(
         text-align: center !important;
     }}
 
-    /* 8. EQUAL FIXED HEIGHT & SCROLLING FOR LEFT/RIGHT BLACK BOXES (INCREASED to 530px) */
+    /* 8. EQUAL FIXED HEIGHT & SCROLLING FOR LEFT/RIGHT BLACK BOXES (530px) */
     .results-heading {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         font-size: 15px !important;
@@ -506,7 +506,7 @@ st.markdown(
             padding: 4px 6px !important;
             margin-bottom: 10px !important;
         }}
-        /* TALLER MOBILE BOXES (Increased to 460px) */
+        /* TALLER MOBILE BOXES (460px) */
         .results-black-box {{
             height: 460px !important;
             min-height: 460px !important;
@@ -810,11 +810,11 @@ Enjoy this free sneak-peek at our clearance tool. If things look good here, we s
         
         with btn_col1:
             btn_premium = st.form_submit_button(
-                "$ PREMIUM UPGRADE $", use_container_width=True
+                "$ PREMIUM\nUPGRADE $", use_container_width=True
             )
         with btn_col2:
             btn_new_search = st.form_submit_button(
-                "NEW SEARCH", use_container_width=True
+                "NEW\nSEARCH", use_container_width=True
             )
         with btn_col3:
             btn_refresh = st.form_submit_button(
