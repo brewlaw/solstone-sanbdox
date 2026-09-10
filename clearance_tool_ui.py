@@ -90,12 +90,12 @@ st.markdown(
         background-image: {panel_css} !important;
         background-size: cover !important;
         background-position: center !important;
-        padding: 28px 22px 20px 22px !important;
-        border: 4.5px solid #000000 !important;
+        padding: 24px 20px 18px 20px !important;
+        border: 4px solid #000000 !important;
         border-radius: 6px !important;
         box-shadow: 
-            inset 0 0 45px rgba(0, 0, 0, 0.95),
-            0px 14px 40px rgba(0, 0, 0, 0.9) !important;
+            inset 0 0 40px rgba(0, 0, 0, 0.95),
+            0px 10px 30px rgba(0, 0, 0, 0.9) !important;
     }}
 
     form[data-testid="stForm"] > div,
@@ -107,16 +107,16 @@ st.markdown(
     .sun-gold-title {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         text-align: center;
-        font-size: 48px !important;
+        font-size: 44px !important;
         font-weight: 900 !important;
-        letter-spacing: 8px !important;
+        letter-spacing: 7px !important;
         color: #FFD700 !important;
         text-shadow: 
             3px 3px 0px #000000,
-            5px 5px 12px rgba(0, 0, 0, 0.95),
-            0px 0px 25px rgba(255, 215, 0, 0.6) !important;
+            4px 4px 10px rgba(0, 0, 0, 0.95),
+            0px 0px 20px rgba(255, 215, 0, 0.5) !important;
         margin-top: 0px;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         line-height: 1.1;
     }}
 
@@ -128,8 +128,8 @@ st.markdown(
     div.stTextInput > label {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         font-weight: 800 !important;
-        font-size: 14px !important;
-        letter-spacing: 1.2px !important;
+        font-size: 13.5px !important;
+        letter-spacing: 1.1px !important;
         color: #F8FAFC !important;
         text-shadow: 2px 2px 4px #000000 !important;
     }}
@@ -157,10 +157,10 @@ st.markdown(
     .info-note-text {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #CBD5E1 !important;
-        font-size: 12px !important;
+        font-size: 11.5px !important;
         font-style: italic !important;
         margin-top: 4px !important;
-        margin-bottom: 16px !important;
+        margin-bottom: 14px !important;
         text-align: center !important;
         text-shadow: 1px 1px 2px #000000 !important;
     }}
@@ -169,15 +169,15 @@ st.markdown(
     .user-summary-banner {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #FFD700 !important;
-        font-size: 14px !important;
+        font-size: 13.5px !important;
         font-weight: 700 !important;
         text-align: center !important;
         background-color: rgba(8, 8, 8, 0.35) !important;
         backdrop-filter: blur(2px) !important;
         border: 1px solid #5C3A21 !important;
         border-radius: 4px !important;
-        padding: 8px 12px !important;
-        margin-bottom: 18px !important;
+        padding: 6px 12px !important;
+        margin-bottom: 16px !important;
         text-shadow: 1px 1px 2px #000000 !important;
     }}
 
@@ -185,7 +185,7 @@ st.markdown(
     .query-summary-banner {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #FFD700 !important;
-        font-size: 14px !important;
+        font-size: 13.5px !important;
         font-weight: 800 !important;
         letter-spacing: 1px !important;
         text-align: center !important;
@@ -193,8 +193,8 @@ st.markdown(
         backdrop-filter: blur(2px) !important;
         border: 1.5px solid #5C3A21 !important;
         border-radius: 4px !important;
-        padding: 8px 14px !important;
-        margin-bottom: 16px !important;
+        padding: 6px 14px !important;
+        margin-bottom: 14px !important;
         text-shadow: 1px 1px 3px #000000 !important;
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8) !important;
     }}
@@ -216,7 +216,7 @@ st.markdown(
         margin: 0 6px !important;
     }}
 
-    /* 7. BASE BUTTON STYLING & MATCHED EXACT HEIGHT (46px - SLEEKER) */
+    /* 7. SLEEK, REFINED BUTTON STYLING (HEIGHT 42px) */
     div.stButton > button,
     div.stFormSubmitButton > button,
     button[data-testid^="baseButton"] {{
@@ -226,26 +226,26 @@ st.markdown(
         background-blend-mode: overlay !important;
         background-color: rgba(220, 230, 240, 0.45) !important;
         
-        backdrop-filter: blur(14px) !important;
-        -webkit-backdrop-filter: blur(14px) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
 
         border-radius: 3px !important;
-        margin-top: 14px !important;
+        margin-top: 10px !important;
         width: 100% !important;
         
         box-shadow: 
             1px 1px 0px rgba(255, 255, 255, 0.7),
-            0px 4px 10px rgba(0, 0, 0, 0.8) !important; /* Tighter shadow */
+            0px 4px 10px rgba(0, 0, 0, 0.7) !important;
             
         transition: all 0.12s ease-in-out !important;
     }}
 
-    /* STRICT MATCHED HEIGHT & FLEX CENTERING FOR ALL BOTTOM BUTTONS */
+    /* STRICT SLEEK HEIGHT (42px) & FLEX CENTERING */
     div[data-testid="stColumn"] div.stFormSubmitButton > button,
     div[data-testid="stColumn"] div.stButton > button {{
-        height: 46px !important; /* Reduced from 56px */
-        min-height: 46px !important;
-        max-height: 46px !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -258,10 +258,10 @@ st.markdown(
     button[data-testid^="baseButton"] p {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #1A0F00 !important;
-        font-weight: 900 !important;
-        font-size: 11px !important; /* Reduced from 13px */
+        font-weight: 800 !important;
+        font-size: 11px !important;
         text-transform: uppercase !important;
-        letter-spacing: 1px !important;
+        letter-spacing: 0.8px !important;
         margin: 0 !important;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
         white-space: pre-wrap !important;
@@ -271,16 +271,16 @@ st.markdown(
     /* 8. EQUAL FIXED HEIGHT FOR LEFT AND RIGHT BLACK BOXES (380px) */
     .results-heading {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
         font-weight: 900 !important;
-        letter-spacing: 1.5px;
+        letter-spacing: 1.2px;
         color: #FFD700 !important;
         margin-top: 0px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         line-height: 1.2;
         text-shadow: 2px 2px 4px #000000 !important;
         border-bottom: 1.5px solid #5C3A21;
-        padding-bottom: 6px;
+        padding-bottom: 5px;
     }}
 
     .results-black-box {{
@@ -288,11 +288,11 @@ st.markdown(
         backdrop-filter: blur(2px) !important;
         border: 1.5px solid #5C3A21 !important;
         border-radius: 4px !important;
-        padding: 14px 14px !important;
+        padding: 12px 14px !important;
         box-shadow: 
             inset 0 0 15px rgba(0, 0, 0, 0.95),
             0px 4px 12px rgba(0, 0, 0, 0.8) !important;
-        height: 380px !important; 
+        height: 380px !important;
         min-height: 380px !important;
         max-height: 380px !important;
         box-sizing: border-box !important;
@@ -326,13 +326,13 @@ st.markdown(
         text-shadow: 1px 1px 2px #000000 !important;
     }}
 
-    /* 9. DESCRIPTION PANEL TEXT FORMATTING SCALED TO FIT 380px */
+    /* 9. DESCRIPTION PANEL TEXT FORMATTING */
     .desc-section-title {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #FFD700 !important;
-        font-size: 12.5px !important;
+        font-size: 12px !important;
         font-weight: 900 !important;
-        letter-spacing: 1px;
+        letter-spacing: 0.8px;
         margin-top: 4px;
         margin-bottom: 4px;
         text-shadow: 2px 2px 4px #000000 !important;
@@ -351,7 +351,7 @@ st.markdown(
     .desc-list li {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #E2E8F0 !important;
-        font-size: 10px !important; 
+        font-size: 10px !important;
         line-height: 1.3 !important;
     }}
 
@@ -380,14 +380,14 @@ st.markdown(
         margin: 6px 0 !important;
     }}
 
-    /* 10. GREEN DISCOUNT BANNER & LEGAL DISCLAIMER BOX WITH NO OUTLINE */
+    /* 10. GREEN DISCOUNT BANNER & LEGAL DISCLAIMER BOX */
     .green-discount-box {{
         background-color: rgba(5, 5, 5, 0.95) !important;
         border: 2px solid #22C55E !important;
         border-radius: 4px !important;
-        padding: 14px 20px !important;
+        padding: 12px 18px !important;
         text-align: center;
-        margin-top: 18px !important;
+        margin-top: 16px !important;
         box-shadow: 
             0px 6px 20px rgba(0,0,0,0.95),
             0px 0px 15px rgba(34, 197, 94, 0.35) !important;
@@ -397,7 +397,7 @@ st.markdown(
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #22C55E !important;
         font-weight: 800 !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
         text-shadow: 1px 1px 3px #000000 !important;
     }}
 
@@ -411,13 +411,13 @@ st.markdown(
     .green-discount-price-new {{
         color: #4ADE80 !important;
         font-weight: 900 !important;
-        font-size: 20px !important;
+        font-size: 18px !important;
         margin-right: 6px;
     }}
 
     .green-discount-tag {{
         color: #86EFAC !important;
-        font-size: 13px !important;
+        font-size: 12.5px !important;
         font-weight: 600 !important;
     }}
 
@@ -425,17 +425,17 @@ st.markdown(
         background-color: rgba(5, 5, 5, 0.92) !important;
         border: none !important;
         border-radius: 4px !important;
-        padding: 12px 18px !important;
-        margin-top: 24px !important;
-        margin-bottom: 20px !important;
+        padding: 10px 16px !important;
+        margin-top: 20px !important;
+        margin-bottom: 16px !important;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8) !important;
     }}
 
     .disclaimer-text {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #94A3B8 !important;
-        font-size: 11px !important;
-        line-height: 1.45 !important;
+        font-size: 10.5px !important;
+        line-height: 1.4 !important;
         text-align: left !important;
         margin: 0 !important;
         text-shadow: 1px 1px 2px #000000 !important;
@@ -449,13 +449,13 @@ st.markdown(
     @media (max-width: 768px) {{
         form[data-testid="stForm"],
         div[data-testid="stVerticalBlockBorderWrapper"] {{
-            padding: 20px 12px 16px 12px !important;
-            margin-bottom: 20px !important;
+            padding: 18px 12px 14px 12px !important;
+            margin-bottom: 16px !important;
         }}
         .sun-gold-title {{
-            font-size: 34px !important;
-            letter-spacing: 5px !important;
-            margin-bottom: 14px !important;
+            font-size: 32px !important;
+            letter-spacing: 4px !important;
+            margin-bottom: 12px !important;
         }}
         .results-list, .results-list ol, .results-list li {{
             font-size: 10px !important;
@@ -490,7 +490,7 @@ if st.session_state["page"] == "contact":
     div[data-testid="stForm"] div.stFormSubmitButton > button:hover {
         border-color: #333333 !important;
         transform: translate(-1px, -1px);
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.9) !important;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -540,26 +540,25 @@ if st.session_state["page"] == "contact":
 # --- PAGE 2: SEARCH QUERY INPUTS ---
 elif st.session_state["page"] == "search_input":
     
-    # ISOLATED CSS SPECIFICALLY FOR PAGE 2 BUTTONS
     st.markdown("""
     <style>
-    /* Styling for Page 2 Form Buttons */
+    /* Styling for Page 2 Buttons */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button,
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) div.stFormSubmitButton > button {
         border: 2px solid #000000 !important;
     }
     
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) button p {
-        font-size: 20px !important; /* Smaller arrow icon */
+        font-size: 18px !important;
         line-height: 1 !important;
-        margin-top: 2px !important;
+        margin-top: 1px !important;
         color: #1A0F00 !important;
         text-transform: none !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"] div.stFormSubmitButton > button:hover {
         border-color: #333333 !important;
         transform: translate(-1px, -1px);
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.9) !important;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -626,85 +625,87 @@ elif st.session_state["page"] == "search_input":
 # --- PAGE 3: SEARCH RESULTS & COVERAGE ---
 elif st.session_state["page"] == "results":
     
-    # ISOLATED CSS SPECIFICALLY FOR PAGE 3 BUTTONS
     st.markdown("""
     <style>
     /* PAGE 3: LEFT PREMIUM BUTTON (50% WIDTH) */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button {
         position: relative !important;
         border: 2px solid #16A34A !important;
-        padding: 4px 28px !important;
+        padding: 4px 22px !important;
     }
     
-    /* Side Dollar Signs */
+    /* Sleeker Side Dollar Signs */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button::before {
         content: "$" !important;
-        position: absolute !important; left: 12px !important; top: 50% !important; transform: translateY(-50%) !important;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 900 !important;
-        font-size: 20px !important; color: #15803D !important; line-height: 1 !important;
+        position: absolute !important; left: 10px !important; top: 50% !important; transform: translateY(-50%) !important;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 800 !important;
+        font-size: 18px !important; color: #15803D !important; line-height: 1 !important;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button::after {
         content: "$" !important;
-        position: absolute !important; right: 12px !important; top: 50% !important; transform: translateY(-50%) !important;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 900 !important;
-        font-size: 20px !important; color: #15803D !important; line-height: 1 !important;
+        position: absolute !important; right: 10px !important; top: 50% !important; transform: translateY(-50%) !important;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 800 !important;
+        font-size: 18px !important; color: #15803D !important; line-height: 1 !important;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
     }
     
-    /* Strict un-wrappable flexblock for the price line */
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p {
-        display: block !important;
-        font-size: 0px !important; color: transparent !important; margin: 0 !important; width: 100% !important;
-        text-align: center !important; white-space: nowrap !important;
+    /* Strictly Unbreakable, Centered Single-Line Pricing Layout */
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button div[data-testid="stMarkdownContainer"] {
+        width: 100% !important;
+        text-align: center !important;
     }
     
-    /* Top Line: UPGRADE TO PREMIUM */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button div[data-testid="stMarkdownContainer"]::before {
         content: "UPGRADE TO PREMIUM:" !important;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 900 !important;
-        font-size: 11px !important; color: #15803D !important; letter-spacing: 1px !important;
+        font-size: 11px !important; color: #15803D !important; letter-spacing: 0.8px !important;
         display: block !important; margin-bottom: 2px !important; text-align: center !important;
         white-space: nowrap !important;
+        line-height: 1.1 !important;
     }
     
-    /* Bottom Line Prices (Strictly inline, single space gap) */
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p {
+        font-size: 0px !important; color: transparent !important; margin: 0 !important; padding: 0 !important;
+        line-height: 1 !important; text-align: center !important; white-space: nowrap !important;
+        display: block !important; width: 100% !important;
+    }
+    
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p::before {
         content: "$100" !important;
         visibility: visible !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-size: 11px !important; font-weight: 900 !important; color: #DC2626 !important;
-        text-decoration: line-through !important; margin-right: 4px !important; /* EXACTLY ONE SPACE */
-        display: inline !important;
+        font-size: 10.5px !important; font-weight: 800 !important; color: #DC2626 !important;
+        text-decoration: line-through !important; margin-right: 4px !important; /* STRICT SINGLE SPACE */
+        display: inline !important; white-space: nowrap !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p::after {
         content: "$50 (ATTENDEE DISCOUNT)" !important;
         visibility: visible !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-size: 11px !important; font-weight: 900 !important; color: #15803D !important;
-        display: inline !important;
+        font-size: 10.5px !important; font-weight: 800 !important; color: #15803D !important;
+        margin: 0 !important; display: inline !important; white-space: nowrap !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button:hover {
         border-color: #22C55E !important;
-        transform: translate(-1px, -1px); box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.9) !important;
+        transform: translate(-1px, -1px); box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
     }
 
     /* PAGE 3: MIDDLE & RIGHT BUTTONS */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) div.stFormSubmitButton > button,
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button {
         border: 2px solid #000000 !important;
-        padding: 4px 10px !important;
+        padding: 4px 8px !important;
     }
-    
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) button p {
-        font-size: 20px !important;
+        font-size: 18px !important;
         line-height: 1 !important;
-        margin-top: 2px !important;
+        margin-top: 1px !important;
         text-transform: none !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) div.stFormSubmitButton > button:hover,
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button:hover {
         border-color: #333333 !important;
         transform: translate(-1px, -1px);
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.9) !important;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -718,7 +719,6 @@ elif st.session_state["page"] == "results":
         s_mark = st.session_state.get("mark_name", "").strip() or "BEER BRAND"
         s_goods = st.session_state.get("goods_name", "").strip() or "BEER"
         
-        # Solid black labels (with clean offset underline) and a neutral, spaced pipe separator
         query_banner = f'<span class="query-label">Mark:</span> {s_mark} <span class="query-divider">|</span> <span class="query-label">Goods:</span> {s_goods}'
 
         st.markdown(
