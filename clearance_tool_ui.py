@@ -495,7 +495,8 @@ if st.session_state["page"] == "contact":
     </style>
     """, unsafe_allow_html=True)
 
-    col_center1, col_center2, col_center3 = st.columns([0.5, 3.0, 0.5])
+    # 60% Width layout via [0.8, 2.4, 0.8] ratio
+    col_center1, col_center2, col_center3 = st.columns([0.8, 2.4, 0.8])
     with col_center2:
         with st.form(key="solstone_contact_panel"):
             st.markdown(
@@ -525,7 +526,7 @@ if st.session_state["page"] == "contact":
             )
 
             btn_next = st.form_submit_button(
-                "CLICK TO PERFORM\nNEW SEARCH", use_container_width=True
+                "PROCEED TO\nSEARCH TOOL", use_container_width=True
             )
 
         render_legal_disclaimer()
@@ -563,7 +564,8 @@ elif st.session_state["page"] == "search_input":
     </style>
     """, unsafe_allow_html=True)
 
-    col_center1, col_center2, col_center3 = st.columns([0.5, 3.0, 0.5])
+    # 60% Width layout via [0.8, 2.4, 0.8] ratio
+    col_center1, col_center2, col_center3 = st.columns([0.8, 2.4, 0.8])
     with col_center2:
         with st.form(key="solstone_search_panel"):
             st.markdown(
@@ -675,7 +677,7 @@ elif st.session_state["page"] == "results":
         content: "$100" !important;
         visibility: visible !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         font-size: 10.5px !important; font-weight: 800 !important; color: #DC2626 !important;
-        text-decoration: line-through !important; margin-right: 4px !important; /* STRICT SINGLE SPACE */
+        text-decoration: line-through !important; margin-right: 4px !important;
         display: inline !important; white-space: nowrap !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p::after {
