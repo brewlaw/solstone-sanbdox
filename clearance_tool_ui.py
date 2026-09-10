@@ -146,18 +146,20 @@ st.markdown(
         line-height: 1.1;
     }}
 
-    /* 6. INPUT LABELS & FIELDS */
+    /* 6. HIGH-CONTRAST PURE WHITE INPUT LABELS & FIELDS */
     div.stTextInput {{
         margin-bottom: 8px !important;
     }}
 
     div.stTextInput > label {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-weight: 800 !important;
-        font-size: 13.5px !important;
-        letter-spacing: 1.1px !important;
-        color: #F8FAFC !important;
-        text-shadow: 2px 2px 4px #000000 !important;
+        font-weight: 900 !important;
+        font-size: 14px !important;
+        letter-spacing: 1.2px !important;
+        color: #FFFFFF !important;
+        text-shadow: 
+            2px 2px 0px #000000,
+            0px 0px 6px rgba(0, 0, 0, 0.95) !important;
     }}
 
     div.stTextInput > div > div > input {{
@@ -701,7 +703,7 @@ elif st.session_state["page"] == "search_input":
             placeholder="INSERT DESIRED NAME HERE",
         )
         goods_input = st.text_input(
-            "Goods:",
+            "GOODS:",
             value=st.session_state["goods_name"],
             placeholder="BEER",
         )
