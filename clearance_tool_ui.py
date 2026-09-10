@@ -41,6 +41,7 @@ def get_asset_base64(filename):
 bg_b64 = get_asset_base64("background.jpg")
 panel_b64 = get_asset_base64("panel.jpg")
 btn_b64 = get_asset_base64("buttons.jpg")
+gold_b64 = get_asset_base64("gold.jpg")
 
 # CSS Background Rules
 if bg_b64:
@@ -57,6 +58,11 @@ if btn_b64:
     btn_css = f"linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(200, 220, 235, 0.2) 50%, rgba(255, 255, 255, 0.35) 100%), url('data:image/jpeg;base64,{btn_b64}')"
 else:
     btn_css = "linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(200, 220, 235, 0.25) 50%, rgba(255, 255, 255, 0.4) 100%)"
+
+if gold_b64:
+    gold_btn_css = f"linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 215, 0, 0.15) 50%, rgba(255, 255, 255, 0.2) 100%), url('data:image/jpeg;base64,{gold_b64}')"
+else:
+    gold_btn_css = "linear-gradient(135deg, rgba(255, 215, 0, 0.6) 0%, rgba(255, 140, 0, 0.4) 100%)"
 
 st.markdown(
     f"""
@@ -422,9 +428,10 @@ st.markdown(
         text-shadow: 1px 1px 3px #000000 !important;
     }}
 
-    .desc-list li.desc-list-green-bold-italic,
-    ul.desc-list li.desc-list-green-bold-italic {{
-        color: #22C55E !important;
+    /* CUSTOM GOLD BOLD ITALIC TEXT */
+    .desc-list li.desc-list-gold-bold-italic,
+    ul.desc-list li.desc-list-gold-bold-italic {{
+        color: #FFD700 !important;
         font-weight: 800 !important;
         font-style: italic !important;
         text-shadow: 1px 1px 3px #000000 !important;
@@ -726,41 +733,42 @@ elif st.session_state["page"] == "search_input":
 elif st.session_state["page"] == "results":
 
     st.markdown(
-        """
+        f"""
     <style>
-    /* PAGE 3: LEFT PREMIUM BUTTON */
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button {
-        border: 2px solid #16A34A !important;
+    /* PAGE 3: LEFT PREMIUM BUTTON STYLED WITH GOLD BACKGROUND */
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button {{
+        border: 2px solid #000000 !important;
         padding: 2px 4px !important;
-    }
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p {
-        color: #15803D !important;
+        background-image: {gold_btn_css} !important;
+    }}
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p {{
+        color: #1A0F00 !important;
         font-size: 11px !important;
         line-height: 1.05 !important;
-    }
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button:hover {
-        border-color: #22C55E !important;
+    }}
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button:hover {{
+        border-color: #333333 !important;
         transform: translate(-1px, -1px); box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
-    }
+    }}
 
     /* PAGE 3: MIDDLE & RIGHT BUTTONS */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) div.stFormSubmitButton > button,
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button {
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button {{
         border: 2px solid #000000 !important;
         padding: 2px 4px !important;
-    }
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) button p {
+    }}
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) button p {{
         font-size: 18px !important;
         line-height: 1 !important;
         margin-top: 1px !important;
         text-transform: none !important;
-    }
+    }}
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) div.stFormSubmitButton > button:hover,
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button:hover {
+    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button:hover {{
         border-color: #333333 !important;
         transform: translate(-1px, -1px);
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
-    }
+    }}
     </style>
     """,
         unsafe_allow_html=True,
@@ -832,7 +840,7 @@ Enjoy this free sneak-peek at our clearance tool. If things look good here, we s
 <li>Proprietary search engine designed to identify the closest competitor brands.</li>
 <li>Carefully crafted by trademark attorney with 15 years in the beverage alcohol business.</li>
 <li>Your custom PDF report demonstrates you did your due diligence efforts in selecting your name.</li>
-<li class="desc-list-green-bold-italic">Temporary 50% discount to conference attendees</li>
+<li class="desc-list-gold-bold-italic">Temporary, exclusive 50% discount to conference attendees.</li>
 </ul>
 </div>""")
 
@@ -841,7 +849,7 @@ Enjoy this free sneak-peek at our clearance tool. If things look good here, we s
 
         with btn_col1:
             btn_premium = st.form_submit_button(
-                "＄ PREMIUM\nUPGRADE ＄", use_container_width=True
+                "PREMIUM\nUPGRADE", use_container_width=True
             )
         with btn_col2:
             btn_new_search = st.form_submit_button(
