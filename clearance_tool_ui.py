@@ -85,7 +85,7 @@ st.markdown(
         flex: 1 1 auto !important;
     }}
 
-    /* 4. OPAQUE WOOD PANEL CARDS WITH THICK BLACK OUTLINE */
+    /* 4. OPAQUE WOOD PANEL CARDS WITH STRICT GLOBAL MAX-WIDTH (660px) */
     form[data-testid="stForm"],
     .stForm,
     div[data-testid="stVerticalBlockBorderWrapper"] {{
@@ -99,6 +99,9 @@ st.markdown(
         box-shadow: 
             inset 0 0 40px rgba(0, 0, 0, 0.95),
             0px 10px 30px rgba(0, 0, 0, 0.9) !important;
+        max-width: 660px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }}
 
     form[data-testid="stForm"] > div,
@@ -383,7 +386,7 @@ st.markdown(
         margin: 6px 0 !important;
     }}
 
-    /* 10. GREEN DISCOUNT BANNER & LEGAL DISCLAIMER BOX */
+    /* 10. GREEN DISCOUNT BANNER & LEGAL DISCLAIMER BOX WITH STRICT MAX-WIDTH (660px) */
     .green-discount-box {{
         background-color: rgba(5, 5, 5, 0.95) !important;
         border: 2px solid #22C55E !important;
@@ -394,6 +397,9 @@ st.markdown(
         box-shadow: 
             0px 6px 20px rgba(0,0,0,0.95),
             0px 0px 15px rgba(34, 197, 94, 0.35) !important;
+        max-width: 660px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }}
 
     .green-discount-text {{
@@ -432,6 +438,9 @@ st.markdown(
         margin-top: 20px !important;
         margin-bottom: 16px !important;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8) !important;
+        max-width: 660px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }}
 
     .disclaimer-text {{
@@ -451,7 +460,10 @@ st.markdown(
     /* 11. MOBILE RESPONSIVE MEDIA QUERIES */
     @media (max-width: 768px) {{
         form[data-testid="stForm"],
-        div[data-testid="stVerticalBlockBorderWrapper"] {{
+        div[data-testid="stVerticalBlockBorderWrapper"],
+        .disclaimer-box,
+        .green-discount-box {{
+            max-width: 100% !important;
             padding: 18px 12px 14px 12px !important;
             margin-bottom: 16px !important;
         }}
@@ -498,47 +510,45 @@ if st.session_state["page"] == "contact":
     </style>
     """, unsafe_allow_html=True)
 
-    col_center1, col_center2, col_center3 = st.columns([0.8, 2.4, 0.8])
-    with col_center2:
-        with st.form(key="solstone_contact_panel"):
-            st.markdown(
-                '<div class="sun-gold-title">SOLSTONE</div>',
-                unsafe_allow_html=True,
-            )
+    with st.form(key="solstone_contact_panel"):
+        st.markdown(
+            '<div class="sun-gold-title">SOLSTONE</div>',
+            unsafe_allow_html=True,
+        )
 
-            company_input = st.text_input(
-                "COMPANY NAME:",
-                value=st.session_state["company_name"],
-                placeholder="YOUR COMPANY NAME",
-            )
-            contact_input = st.text_input(
-                "CONTACT NAME:",
-                value=st.session_state["contact_name"],
-                placeholder="YOUR FULL NAME",
-            )
-            email_input = st.text_input(
-                "COMPANY EMAIL:",
-                value=st.session_state["company_email"],
-                placeholder="NAME@COMPANY.COM",
-            )
+        company_input = st.text_input(
+            "COMPANY NAME:",
+            value=st.session_state["company_name"],
+            placeholder="YOUR COMPANY NAME",
+        )
+        contact_input = st.text_input(
+            "CONTACT NAME:",
+            value=st.session_state["contact_name"],
+            placeholder="YOUR FULL NAME",
+        )
+        email_input = st.text_input(
+            "COMPANY EMAIL:",
+            value=st.session_state["company_email"],
+            placeholder="NAME@COMPANY.COM",
+        )
 
-            st.markdown(
-                '<div class="info-note-text">Your information will be used to email you a copy of the results of your searches</div>',
-                unsafe_allow_html=True,
-            )
+        st.markdown(
+            '<div class="info-note-text">Your information will be used to email you a copy of the results of your searches</div>',
+            unsafe_allow_html=True,
+        )
 
-            btn_next = st.form_submit_button(
-                "PROCEED TO SEARCH TOOL", use_container_width=True
-            )
+        btn_next = st.form_submit_button(
+            "PROCEED TO SEARCH TOOL", use_container_width=True
+        )
 
-        render_legal_disclaimer()
+    render_legal_disclaimer()
 
-        if btn_next:
-            st.session_state["company_name"] = company_input
-            st.session_state["contact_name"] = contact_input
-            st.session_state["company_email"] = email_input
-            st.session_state["page"] = "search_input"
-            st.rerun()
+    if btn_next:
+        st.session_state["company_name"] = company_input
+        st.session_state["contact_name"] = contact_input
+        st.session_state["company_email"] = email_input
+        st.session_state["page"] = "search_input"
+        st.rerun()
 
 # --- PAGE 2: SEARCH QUERY INPUTS ---
 elif st.session_state["page"] == "search_input":
@@ -566,64 +576,62 @@ elif st.session_state["page"] == "search_input":
     </style>
     """, unsafe_allow_html=True)
 
-    col_center1, col_center2, col_center3 = st.columns([0.8, 2.4, 0.8])
-    with col_center2:
-        with st.form(key="solstone_search_panel"):
-            st.markdown(
-                '<div class="sun-gold-title">SOLSTONE</div>',
-                unsafe_allow_html=True,
-            )
+    with st.form(key="solstone_search_panel"):
+        st.markdown(
+            '<div class="sun-gold-title">SOLSTONE</div>',
+            unsafe_allow_html=True,
+        )
 
-            # Formatted contact summary banner
-            c_name = st.session_state.get("contact_name", "").strip() or "Mark"
-            c_email = (
-                st.session_state.get("company_email", "").strip()
-                or "mark@yahoo.com"
-            )
-            c_comp = (
-                st.session_state.get("company_name", "").strip()
-                or "ABC Brewing"
-            )
-            summary_banner = f"{c_name} ({c_email}) from {c_comp}"
+        # Formatted contact summary banner
+        c_name = st.session_state.get("contact_name", "").strip() or "Mark"
+        c_email = (
+            st.session_state.get("company_email", "").strip()
+            or "mark@yahoo.com"
+        )
+        c_comp = (
+            st.session_state.get("company_name", "").strip()
+            or "ABC Brewing"
+        )
+        summary_banner = f"{c_name} ({c_email}) from {c_comp}"
 
-            st.markdown(
-                f'<div class="user-summary-banner">{summary_banner}</div>',
-                unsafe_allow_html=True,
+        st.markdown(
+            f'<div class="user-summary-banner">{summary_banner}</div>',
+            unsafe_allow_html=True,
+        )
+
+        mark_input = st.text_input(
+            "MARK:",
+            value=st.session_state["mark_name"],
+            placeholder="INSERT DESIRED NAME HERE",
+        )
+        goods_input = st.text_input(
+            "Goods:",
+            value=st.session_state["goods_name"],
+            placeholder="BEER",
+        )
+
+        btn_col_search, btn_col_back = st.columns([5, 1], gap="small")
+        
+        with btn_col_search:
+            btn_search = st.form_submit_button(
+                "PERFORM FREE SEARCH", use_container_width=True
             )
+        with btn_col_back:
+            btn_back = st.form_submit_button("↻", use_container_width=True)
 
-            mark_input = st.text_input(
-                "MARK:",
-                value=st.session_state["mark_name"],
-                placeholder="INSERT DESIRED NAME HERE",
-            )
-            goods_input = st.text_input(
-                "Goods:",
-                value=st.session_state["goods_name"],
-                placeholder="BEER",
-            )
+    render_legal_disclaimer()
 
-            btn_col_search, btn_col_back = st.columns([5, 1], gap="small")
-            
-            with btn_col_search:
-                btn_search = st.form_submit_button(
-                    "PERFORM FREE SEARCH", use_container_width=True
-                )
-            with btn_col_back:
-                btn_back = st.form_submit_button("↻", use_container_width=True)
-
-        render_legal_disclaimer()
-
-        if btn_search:
-            st.session_state["mark_name"] = mark_input
-            st.session_state["goods_name"] = goods_input
-            st.session_state["page"] = "results"
-            st.rerun()
-            
-        if btn_back:
-            st.session_state["mark_name"] = mark_input
-            st.session_state["goods_name"] = goods_input
-            st.session_state["page"] = "contact"
-            st.rerun()
+    if btn_search:
+        st.session_state["mark_name"] = mark_input
+        st.session_state["goods_name"] = goods_input
+        st.session_state["page"] = "results"
+        st.rerun()
+        
+    if btn_back:
+        st.session_state["mark_name"] = mark_input
+        st.session_state["goods_name"] = goods_input
+        st.session_state["page"] = "contact"
+        st.rerun()
 
 # --- PAGE 3: SEARCH RESULTS & COVERAGE ---
 elif st.session_state["page"] == "results":
