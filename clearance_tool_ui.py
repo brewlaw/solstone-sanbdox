@@ -261,7 +261,7 @@ st.markdown(
         transition: all 0.12s ease-in-out !important;
     }}
 
-    /* STRICT SLEEK HEIGHT (56px) & FLEX CENTERING WITH SOFT RETURN LINE-HEIGHT (1.15) */
+    /* STRICT SLEEK HEIGHT (56px) & PERFECT FLEX VERTICAL CENTERING */
     div[data-testid="stColumn"] div.stFormSubmitButton > button,
     div[data-testid="stColumn"] div.stButton > button {{
         height: 56px !important;
@@ -272,11 +272,28 @@ st.markdown(
         justify-content: center !important;
         align-items: center !important;
         box-sizing: border-box !important;
+        padding: 2px 4px !important;
     }}
 
+    /* FORCE INNER CONTAINER DIV TO BE FLEX CENTERED WITH ZERO GAP */
+    div.stButton > button > div,
+    div.stFormSubmitButton > button > div,
+    button[data-testid^="baseButton"] > div,
+    div[data-testid="stMarkdownContainer"] {{
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0px !important;
+    }}
+
+    /* FORCE TIGHT SINGLE-SPACED LINE-HEIGHT (1.05) & ZERO MARGIN ON BUTTON TEXT */
     div.stButton > button p,
     div.stFormSubmitButton > button p,
-    button[data-testid^="baseButton"] p {{
+    button[data-testid^="baseButton"] p,
+    div[data-testid="stMarkdownContainer"] p {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #1A0F00 !important;
         font-weight: 800 !important;
@@ -284,7 +301,8 @@ st.markdown(
         text-transform: uppercase !important;
         letter-spacing: 0.8px !important;
         margin: 0 !important;
-        line-height: 1.15 !important;
+        padding: 0 !important;
+        line-height: 1.05 !important;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
         white-space: pre-wrap !important;
         text-align: center !important;
@@ -713,12 +731,12 @@ elif st.session_state["page"] == "results":
     /* PAGE 3: LEFT PREMIUM BUTTON */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button {
         border: 2px solid #16A34A !important;
-        padding: 4px 8px !important;
+        padding: 2px 4px !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p {
         color: #15803D !important;
         font-size: 11px !important;
-        line-height: 1.15 !important;
+        line-height: 1.05 !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button:hover {
         border-color: #22C55E !important;
@@ -729,7 +747,7 @@ elif st.session_state["page"] == "results":
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) div.stFormSubmitButton > button,
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button {
         border: 2px solid #000000 !important;
-        padding: 4px 4px !important;
+        padding: 2px 4px !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) button p {
         font-size: 18px !important;
@@ -823,7 +841,7 @@ Enjoy this free sneak-peek at our clearance tool. If things look good here, we s
 
         with btn_col1:
             btn_premium = st.form_submit_button(
-                "\\$ PREMIUM\nUPGRADE \\$", use_container_width=True
+                "＄ PREMIUM\nUPGRADE ＄", use_container_width=True
             )
         with btn_col2:
             btn_new_search = st.form_submit_button(
