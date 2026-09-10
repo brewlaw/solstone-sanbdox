@@ -59,9 +59,20 @@ else:
 st.markdown(
     f"""
     <style>
-    /* 1. GLOBAL HELVETICA TYPOGRAPHY */
+    /* 1. GLOBAL HELVETICA TYPOGRAPHY & LESS TOP SPACING */
     .stApp, html, body, [class*="css"] {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    }}
+    
+    /* Hide the blank Streamlit header bar to save space */
+    header[data-testid="stHeader"] {{
+        display: none !important;
+    }}
+    
+    /* Reduce Streamlit's default top padding dramatically */
+    .block-container {{
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
     }}
 
     /* 2. BACKGROUND WATER TEXTURE */
@@ -77,7 +88,7 @@ st.markdown(
     /* 3. FORCE COLUMNS TO STAY SIDE-BY-SIDE ON NARROW SCREENS */
     div[data-testid="stHorizontalBlock"] {{
         flex-wrap: nowrap !important;
-        gap: 10px !important;
+        gap: 8px !important;
     }}
 
     div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {{
@@ -102,6 +113,7 @@ st.markdown(
         max-width: 660px !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        box-sizing: border-box !important;
     }}
 
     form[data-testid="stForm"] > div,
@@ -109,13 +121,13 @@ st.markdown(
         background: transparent !important;
     }}
 
-    /* 5. UNIFORM BOLD HELVETICA SUN GOLD MAIN TITLE */
+    /* 5. UNIFORM BOLD HELVETICA SUN GOLD MAIN TITLE WITH SUPERSCRIPT TM */
     .sun-gold-title {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         text-align: center;
         font-size: 44px !important;
         font-weight: 900 !important;
-        letter-spacing: 7px !important;
+        letter-spacing: 6px !important;
         color: #FFD700 !important;
         text-shadow: 
             3px 3px 0px #000000,
@@ -164,6 +176,7 @@ st.markdown(
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #CBD5E1 !important;
         font-size: 11.5px !important;
+        font-style: italic !important;
         margin-top: 4px !important;
         margin-bottom: 14px !important;
         text-align: center !important;
@@ -202,6 +215,7 @@ st.markdown(
         margin-bottom: 14px !important;
         text-shadow: 1px 1px 3px #000000 !important;
         box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8) !important;
+        word-break: break-word !important;
     }}
 
     /* SOLID BLACK TEXT LABELS FOR PAGE 3 SUMMARY */
@@ -273,7 +287,7 @@ st.markdown(
         text-align: center !important;
     }}
 
-    /* 8. EQUAL FIXED HEIGHT FOR LEFT AND RIGHT BLACK BOXES (380px) */
+    /* 8. EQUAL FIXED HEIGHT & SCROLLING FOR LEFT/RIGHT BLACK BOXES (INCREASED 20% to 460px) */
     .results-heading {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         font-size: 15px !important;
@@ -297,12 +311,25 @@ st.markdown(
         box-shadow: 
             inset 0 0 15px rgba(0, 0, 0, 0.95),
             0px 4px 12px rgba(0, 0, 0, 0.8) !important;
-        height: 380px !important;
-        min-height: 380px !important;
-        max-height: 380px !important;
+        height: 460px !important;
+        min-height: 460px !important;
+        max-height: 460px !important;
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }}
+
+    /* Scrollbar Styling inside Black Boxes */
+    .results-black-box::-webkit-scrollbar {{
+        width: 4px;
+    }}
+    .results-black-box::-webkit-scrollbar-thumb {{
+        background: #5C3A21;
+        border-radius: 2px;
     }}
 
     .results-list,
@@ -312,6 +339,7 @@ st.markdown(
         font-size: 10.5px !important;
         color: #E2E8F0 !important;
         line-height: 1.25 !important;
+        word-break: break-word !important;
     }}
 
     .results-list ol {{
@@ -350,6 +378,7 @@ st.markdown(
         line-height: 1.3 !important;
         margin-bottom: 6px;
         text-shadow: 1px 1px 3px #000000 !important;
+        word-break: break-word !important;
     }}
 
     .desc-list,
@@ -358,6 +387,7 @@ st.markdown(
         color: #E2E8F0 !important;
         font-size: 10px !important;
         line-height: 1.3 !important;
+        word-break: break-word !important;
     }}
 
     .desc-list {{
@@ -385,7 +415,7 @@ st.markdown(
         margin: 6px 0 !important;
     }}
 
-    /* 10. GREEN DISCOUNT BANNER & LEGAL DISCLAIMER BOX WITH STRICT MAX-WIDTH (660px) */
+    /* 10. GREEN DISCOUNT BANNER & LEGAL DISCLAIMER BOX */
     .green-discount-box {{
         background-color: rgba(5, 5, 5, 0.95) !important;
         border: 2px solid #22C55E !important;
@@ -463,17 +493,52 @@ st.markdown(
         .disclaimer-box,
         .green-discount-box {{
             max-width: 100% !important;
-            padding: 18px 12px 14px 12px !important;
-            margin-bottom: 16px !important;
-        }}
-        .sun-gold-title {{
-            font-size: 32px !important;
-            letter-spacing: 4px !important;
+            padding: 14px 8px 12px 8px !important;
             margin-bottom: 12px !important;
         }}
+        .sun-gold-title {{
+            font-size: 28px !important;
+            letter-spacing: 3px !important;
+            margin-bottom: 10px !important;
+        }}
+        .query-summary-banner {{
+            font-size: 11px !important;
+            padding: 4px 6px !important;
+            margin-bottom: 10px !important;
+        }}
+        /* TALLER MOBILE BOXES */
+        .results-black-box {{
+            height: 400px !important;
+            min-height: 400px !important;
+            max-height: 400px !important;
+            padding: 10px 8px !important;
+        }}
+        .results-heading {{
+            font-size: 12px !important;
+            letter-spacing: 0.5px !important;
+            margin-bottom: 8px !important;
+            padding-bottom: 4px !important;
+        }}
+        /* RESTORED MOBILE TEXT SIZES FOR READABILITY */
         .results-list, .results-list ol, .results-list li {{
-            font-size: 10px !important;
-            line-height: 1.2 !important;
+            font-size: 9.5px !important;
+            line-height: 1.25 !important;
+        }}
+        .results-list ol {{
+            padding-left: 12px !important;
+        }}
+        .desc-section-title {{
+            font-size: 10.5px !important;
+            letter-spacing: 0.4px !important;
+            margin-top: 4px !important;
+            margin-bottom: 4px !important;
+        }}
+        .desc-text, .desc-list, .desc-list li {{
+            font-size: 9.5px !important;
+            line-height: 1.3 !important;
+        }}
+        .desc-list {{
+            padding-left: 10px !important;
         }}
     }}
     </style>
@@ -511,7 +576,7 @@ if st.session_state["page"] == "contact":
 
     with st.form(key="solstone_contact_panel"):
         st.markdown(
-            '<div class="sun-gold-title">SOLSTONE</div>',
+            '<div class="sun-gold-title">SOLSTONE&trade;</div>',
             unsafe_allow_html=True,
         )
 
@@ -532,7 +597,7 @@ if st.session_state["page"] == "contact":
         )
 
         st.markdown(
-            '<div class="info-note-text">You will be emailed a copy of your search results</div>',
+            '<div class="info-note-text">Your information will be used to email you a copy of the results of your searches</div>',
             unsafe_allow_html=True,
         )
 
@@ -577,7 +642,7 @@ elif st.session_state["page"] == "search_input":
 
     with st.form(key="solstone_search_panel"):
         st.markdown(
-            '<div class="sun-gold-title">SOLSTONE</div>',
+            '<div class="sun-gold-title">SOLSTONE&trade;</div>',
             unsafe_allow_html=True,
         )
 
@@ -641,22 +706,22 @@ elif st.session_state["page"] == "results":
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button {
         position: relative !important;
         border: 2px solid #16A34A !important;
-        padding: 4px 22px !important;
+        padding: 4px 18px !important;
     }
     
     /* Sleeker Side Dollar Signs */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button::before {
         content: "$" !important;
-        position: absolute !important; left: 10px !important; top: 50% !important; transform: translateY(-50%) !important;
+        position: absolute !important; left: 6px !important; top: 50% !important; transform: translateY(-50%) !important;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 800 !important;
-        font-size: 18px !important; color: #15803D !important; line-height: 1 !important;
+        font-size: 16px !important; color: #15803D !important; line-height: 1 !important;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button::after {
         content: "$" !important;
-        position: absolute !important; right: 10px !important; top: 50% !important; transform: translateY(-50%) !important;
+        position: absolute !important; right: 6px !important; top: 50% !important; transform: translateY(-50%) !important;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 800 !important;
-        font-size: 18px !important; color: #15803D !important; line-height: 1 !important;
+        font-size: 16px !important; color: #15803D !important; line-height: 1 !important;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
     }
     
@@ -669,7 +734,7 @@ elif st.session_state["page"] == "results":
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button div[data-testid="stMarkdownContainer"]::before {
         content: "UPGRADE TO PREMIUM:" !important;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 900 !important;
-        font-size: 11px !important; color: #15803D !important; letter-spacing: 0.8px !important;
+        font-size: 10.5px !important; color: #15803D !important; letter-spacing: 0.6px !important;
         display: block !important; margin-bottom: 2px !important; text-align: center !important;
         white-space: nowrap !important;
         line-height: 1.1 !important;
@@ -684,14 +749,14 @@ elif st.session_state["page"] == "results":
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p::before {
         content: "$100" !important;
         visibility: visible !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-size: 10.5px !important; font-weight: 800 !important; color: #DC2626 !important;
-        text-decoration: line-through !important; margin-right: 4px !important;
+        font-size: 9.5px !important; font-weight: 800 !important; color: #DC2626 !important;
+        text-decoration: line-through !important; margin-right: 3px !important;
         display: inline !important; white-space: nowrap !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p::after {
         content: "$50 (ATTENDEE DISCOUNT)" !important;
         visibility: visible !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-size: 10.5px !important; font-weight: 800 !important; color: #15803D !important;
+        font-size: 9.5px !important; font-weight: 800 !important; color: #15803D !important;
         margin: 0 !important; display: inline !important; white-space: nowrap !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button:hover {
@@ -703,7 +768,7 @@ elif st.session_state["page"] == "results":
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(2) div.stFormSubmitButton > button,
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) div.stFormSubmitButton > button {
         border: 2px solid #000000 !important;
-        padding: 4px 8px !important;
+        padding: 4px 4px !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(3) button p {
         font-size: 18px !important;
@@ -722,7 +787,7 @@ elif st.session_state["page"] == "results":
 
     with st.form(key="solstone_results_panel"):
         st.markdown(
-            '<div class="sun-gold-title">SOLSTONE</div>', unsafe_allow_html=True
+            '<div class="sun-gold-title">SOLSTONE&trade;</div>', unsafe_allow_html=True
         )
 
         # QUERY SUMMARY BOX BETWEEN TITLE AND SEARCH BOXES
