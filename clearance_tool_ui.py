@@ -259,7 +259,7 @@ st.markdown(
         transition: all 0.12s ease-in-out !important;
     }}
 
-    /* STRICT SLEEK HEIGHT (Increased to 56px to fit 2 lines comfortably) & FLEX CENTERING */
+    /* STRICT SLEEK HEIGHT (56px) & FLEX CENTERING */
     div[data-testid="stColumn"] div.stFormSubmitButton > button,
     div[data-testid="stColumn"] div.stButton > button {{
         height: 56px !important;
@@ -701,62 +701,14 @@ elif st.session_state["page"] == "results":
     
     st.markdown("""
     <style>
-    /* PAGE 3: LEFT PREMIUM BUTTON (50% WIDTH) */
+    /* PAGE 3: LEFT PREMIUM BUTTON */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button {
-        position: relative !important;
         border: 2px solid #16A34A !important;
-        padding: 4px 18px !important;
+        padding: 4px 8px !important;
     }
-    
-    /* Sleeker Side Dollar Signs */
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button::before {
-        content: "$" !important;
-        position: absolute !important; left: 6px !important; top: 50% !important; transform: translateY(-50%) !important;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 800 !important;
-        font-size: 16px !important; color: #15803D !important; line-height: 1 !important;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
-    }
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button::after {
-        content: "$" !important;
-        position: absolute !important; right: 6px !important; top: 50% !important; transform: translateY(-50%) !important;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 800 !important;
-        font-size: 16px !important; color: #15803D !important; line-height: 1 !important;
-        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
-    }
-    
-    /* Strictly Unbreakable, Centered Single-Line Pricing Layout */
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button div[data-testid="stMarkdownContainer"] {
-        width: 100% !important;
-        text-align: center !important;
-    }
-    
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button div[data-testid="stMarkdownContainer"]::before {
-        content: "UPGRADE TO PREMIUM:" !important;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-weight: 900 !important;
-        font-size: 10.5px !important; color: #15803D !important; letter-spacing: 0.6px !important;
-        display: block !important; margin-bottom: 2px !important; text-align: center !important;
-        white-space: nowrap !important;
-        line-height: 1.1 !important;
-    }
-    
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p {
-        font-size: 0px !important; color: transparent !important; margin: 0 !important; padding: 0 !important;
-        line-height: 1 !important; text-align: center !important; white-space: nowrap !important;
-        display: block !important; width: 100% !important;
-    }
-    
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p::before {
-        content: "$100" !important;
-        visibility: visible !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-size: 9.5px !important; font-weight: 800 !important; color: #DC2626 !important;
-        text-decoration: line-through !important; margin-right: 3px !important;
-        display: inline !important; white-space: nowrap !important;
-    }
-    div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p::after {
-        content: "$50 (ATTENDEE DISCOUNT)" !important;
-        visibility: visible !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-        font-size: 9.5px !important; font-weight: 800 !important; color: #15803D !important;
-        margin: 0 !important; display: inline !important; white-space: nowrap !important;
+        color: #15803D !important;
+        font-size: 11px !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button:hover {
         border-color: #22C55E !important;
@@ -853,16 +805,16 @@ Enjoy this free sneak-peek at our clearance tool. If things look good here, we s
 </ul>
 </div>""")
 
-        # BOTTOM BUTTON ROW (50% / 33% / 17%)
-        btn_col1, btn_col2, btn_col3 = st.columns([3, 2, 1], gap="small")
+        # BOTTOM BUTTON ROW (1/3 / 1/3 / 1/3 Spacing)
+        btn_col1, btn_col2, btn_col3 = st.columns([1, 1, 1], gap="small")
         
         with btn_col1:
             btn_premium = st.form_submit_button(
-                "UPGRADE_PREMIUM_KEY", use_container_width=True
+                "$ PREMIUM UPGRADE $", use_container_width=True
             )
         with btn_col2:
             btn_new_search = st.form_submit_button(
-                "CLICK TO PERFORM\nNEW SEARCH", use_container_width=True
+                "NEW SEARCH", use_container_width=True
             )
         with btn_col3:
             btn_refresh = st.form_submit_button(
