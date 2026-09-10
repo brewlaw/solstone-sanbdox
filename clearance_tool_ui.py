@@ -23,7 +23,7 @@ if "goods_name" not in st.session_state:
 def get_asset_base64(filename):
     base_dir = os.path.dirname(__file__)
     search_dirs = [os.path.join(base_dir, "assets"), base_dir]
-    
+
     for d in search_dirs:
         if os.path.exists(d):
             for f in os.listdir(d):
@@ -31,7 +31,9 @@ def get_asset_base64(filename):
                     full_path = os.path.join(d, f)
                     if os.path.isfile(full_path):
                         with open(full_path, "rb") as file_obj:
-                            return base64.b64encode(file_obj.read()).decode("utf-8")
+                            return base64.b64encode(file_obj.read()).decode(
+                                "utf-8"
+                            )
     return ""
 
 
@@ -69,7 +71,7 @@ st.markdown(
         display: none !important;
     }}
     
-    /* Reduce Streamlit's default top padding dramatically (Pulls boxes to the top) */
+    /* Reduce Streamlit's default top padding dramatically */
     .block-container {{
         padding-top: 0.5rem !important;
         padding-bottom: 2rem !important;
@@ -259,7 +261,7 @@ st.markdown(
         transition: all 0.12s ease-in-out !important;
     }}
 
-    /* STRICT SLEEK HEIGHT (56px) & FLEX CENTERING */
+    /* STRICT SLEEK HEIGHT (56px) & FLEX CENTERING WITH SOFT RETURN LINE-HEIGHT (1.15) */
     div[data-testid="stColumn"] div.stFormSubmitButton > button,
     div[data-testid="stColumn"] div.stButton > button {{
         height: 56px !important;
@@ -282,6 +284,7 @@ st.markdown(
         text-transform: uppercase !important;
         letter-spacing: 0.8px !important;
         margin: 0 !important;
+        line-height: 1.15 !important;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) !important;
         white-space: pre-wrap !important;
         text-align: center !important;
@@ -559,8 +562,9 @@ def render_legal_disclaimer():
 
 # --- PAGE 1: CONTACT INFORMATION FORM ---
 if st.session_state["page"] == "contact":
-    
-    st.markdown("""
+
+    st.markdown(
+        """
     <style>
     div[data-testid="stForm"] div.stFormSubmitButton > button {
         border: 2px solid #000000 !important;
@@ -571,7 +575,9 @@ if st.session_state["page"] == "contact":
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
     }
     </style>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     with st.form(key="solstone_contact_panel"):
         st.markdown(
@@ -615,8 +621,9 @@ if st.session_state["page"] == "contact":
 
 # --- PAGE 2: SEARCH QUERY INPUTS ---
 elif st.session_state["page"] == "search_input":
-    
-    st.markdown("""
+
+    st.markdown(
+        """
     <style>
     /* Styling for Page 2 Buttons */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button,
@@ -637,7 +644,9 @@ elif st.session_state["page"] == "search_input":
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
     }
     </style>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     with st.form(key="solstone_search_panel"):
         st.markdown(
@@ -652,8 +661,7 @@ elif st.session_state["page"] == "search_input":
             or "mark@yahoo.com"
         )
         c_comp = (
-            st.session_state.get("company_name", "").strip()
-            or "ABC Brewing"
+            st.session_state.get("company_name", "").strip() or "ABC Brewing"
         )
         summary_banner = f"{c_name} ({c_email}) from {c_comp}"
 
@@ -674,7 +682,7 @@ elif st.session_state["page"] == "search_input":
         )
 
         btn_col_search, btn_col_back = st.columns([5, 1], gap="small")
-        
+
         with btn_col_search:
             btn_search = st.form_submit_button(
                 "PERFORM FREE SEARCH", use_container_width=True
@@ -689,7 +697,7 @@ elif st.session_state["page"] == "search_input":
         st.session_state["goods_name"] = goods_input
         st.session_state["page"] = "results"
         st.rerun()
-        
+
     if btn_back:
         st.session_state["mark_name"] = mark_input
         st.session_state["goods_name"] = goods_input
@@ -698,8 +706,9 @@ elif st.session_state["page"] == "search_input":
 
 # --- PAGE 3: SEARCH RESULTS & COVERAGE ---
 elif st.session_state["page"] == "results":
-    
-    st.markdown("""
+
+    st.markdown(
+        """
     <style>
     /* PAGE 3: LEFT PREMIUM BUTTON */
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button {
@@ -709,6 +718,7 @@ elif st.session_state["page"] == "results":
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) button p {
         color: #15803D !important;
         font-size: 11px !important;
+        line-height: 1.15 !important;
     }
     div[data-testid="stForm"] div[data-testid="stHorizontalBlock"]:last-of-type > div[data-testid="stColumn"]:nth-child(1) div.stFormSubmitButton > button:hover {
         border-color: #22C55E !important;
@@ -734,17 +744,20 @@ elif st.session_state["page"] == "results":
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9) !important;
     }
     </style>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
 
     with st.form(key="solstone_results_panel"):
         st.markdown(
-            '<div class="sun-gold-title">SOLSTONE&trade;</div>', unsafe_allow_html=True
+            '<div class="sun-gold-title">SOLSTONE&trade;</div>',
+            unsafe_allow_html=True,
         )
 
         # QUERY SUMMARY BOX BETWEEN TITLE AND SEARCH BOXES
         s_mark = st.session_state.get("mark_name", "").strip() or "BEER BRAND"
         s_goods = st.session_state.get("goods_name", "").strip() or "BEER"
-        
+
         query_banner = f'<span class="query-label">Mark:</span> {s_mark} <span class="query-divider">|</span> <span class="query-label">Goods:</span> {s_goods}'
 
         st.markdown(
@@ -807,19 +820,17 @@ Enjoy this free sneak-peek at our clearance tool. If things look good here, we s
 
         # BOTTOM BUTTON ROW (1/3 / 1/3 / 1/3 Spacing)
         btn_col1, btn_col2, btn_col3 = st.columns([1, 1, 1], gap="small")
-        
+
         with btn_col1:
             btn_premium = st.form_submit_button(
-                "$ PREMIUM\nUPGRADE $", use_container_width=True
+                "\\$ PREMIUM\nUPGRADE \\$", use_container_width=True
             )
         with btn_col2:
             btn_new_search = st.form_submit_button(
                 "NEW\nSEARCH", use_container_width=True
             )
         with btn_col3:
-            btn_refresh = st.form_submit_button(
-                "↻", use_container_width=True
-            )
+            btn_refresh = st.form_submit_button("↻", use_container_width=True)
 
     if btn_premium:
         st.html(
@@ -835,7 +846,7 @@ Upgrading to Premium Search: <span class="green-discount-price-old">$100</span> 
     if btn_new_search:
         st.session_state["page"] = "search_input"
         st.rerun()
-        
+
     if btn_refresh:
         st.session_state["page"] = "contact"
         st.rerun()
