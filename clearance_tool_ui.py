@@ -164,7 +164,6 @@ st.markdown(
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         color: #CBD5E1 !important;
         font-size: 11.5px !important;
-        font-style: italic !important;
         margin-top: 4px !important;
         margin-bottom: 14px !important;
         text-align: center !important;
@@ -533,7 +532,7 @@ if st.session_state["page"] == "contact":
         )
 
         st.markdown(
-            '<div class="info-note-text">Your information will be used to email you a copy of the results of your searches</div>',
+            '<div class="info-note-text">You will be emailed a copy of your search results</div>',
             unsafe_allow_html=True,
         )
 
