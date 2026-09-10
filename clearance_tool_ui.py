@@ -59,7 +59,7 @@ else:
 st.markdown(
     f"""
     <style>
-    /* 1. GLOBAL HELVETICA TYPOGRAPHY & LESS TOP SPACING */
+    /* 1. GLOBAL HELVETICA TYPOGRAPHY & AGGRESSIVE TOP SPACING REDUCTION */
     .stApp, html, body, [class*="css"] {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     }}
@@ -69,9 +69,9 @@ st.markdown(
         display: none !important;
     }}
     
-    /* Reduce Streamlit's default top padding dramatically */
+    /* Reduce Streamlit's default top padding dramatically (Pulls boxes to the top) */
     .block-container {{
-        padding-top: 2rem !important;
+        padding-top: 0.5rem !important;
         padding-bottom: 2rem !important;
     }}
 
@@ -235,7 +235,7 @@ st.markdown(
         margin: 0 6px !important;
     }}
 
-    /* 7. SLEEK, REFINED BUTTON STYLING (HEIGHT 42px) */
+    /* 7. SLEEK, REFINED BUTTON STYLING */
     div.stButton > button,
     div.stFormSubmitButton > button,
     button[data-testid^="baseButton"] {{
@@ -259,12 +259,12 @@ st.markdown(
         transition: all 0.12s ease-in-out !important;
     }}
 
-    /* STRICT SLEEK HEIGHT (42px) & FLEX CENTERING */
+    /* STRICT SLEEK HEIGHT (Increased to 56px to fit 2 lines comfortably) & FLEX CENTERING */
     div[data-testid="stColumn"] div.stFormSubmitButton > button,
     div[data-testid="stColumn"] div.stButton > button {{
-        height: 42px !important;
-        min-height: 42px !important;
-        max-height: 42px !important;
+        height: 56px !important;
+        min-height: 56px !important;
+        max-height: 56px !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
@@ -287,7 +287,7 @@ st.markdown(
         text-align: center !important;
     }}
 
-    /* 8. EQUAL FIXED HEIGHT & SCROLLING FOR LEFT/RIGHT BLACK BOXES (INCREASED 20% to 460px) */
+    /* 8. EQUAL FIXED HEIGHT & SCROLLING FOR LEFT/RIGHT BLACK BOXES (INCREASED to 530px) */
     .results-heading {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         font-size: 15px !important;
@@ -311,9 +311,9 @@ st.markdown(
         box-shadow: 
             inset 0 0 15px rgba(0, 0, 0, 0.95),
             0px 4px 12px rgba(0, 0, 0, 0.8) !important;
-        height: 460px !important;
-        min-height: 460px !important;
-        max-height: 460px !important;
+        height: 530px !important;
+        min-height: 530px !important;
+        max-height: 530px !important;
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
@@ -506,11 +506,11 @@ st.markdown(
             padding: 4px 6px !important;
             margin-bottom: 10px !important;
         }}
-        /* TALLER MOBILE BOXES */
+        /* TALLER MOBILE BOXES (Increased to 460px) */
         .results-black-box {{
-            height: 400px !important;
-            min-height: 400px !important;
-            max-height: 400px !important;
+            height: 460px !important;
+            min-height: 460px !important;
+            max-height: 460px !important;
             padding: 10px 8px !important;
         }}
         .results-heading {{
@@ -519,7 +519,6 @@ st.markdown(
             margin-bottom: 8px !important;
             padding-bottom: 4px !important;
         }}
-        /* RESTORED MOBILE TEXT SIZES FOR READABILITY */
         .results-list, .results-list ol, .results-list li {{
             font-size: 9.5px !important;
             line-height: 1.25 !important;
