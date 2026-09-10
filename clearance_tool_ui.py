@@ -19,16 +19,19 @@ if "goods_name" not in st.session_state:
     st.session_state["goods_name"] = ""
 
 
-# Helper to locate and convert texture assets to base64
+# Case-insensitive helper to locate and convert texture assets to base64
 def get_asset_base64(filename):
-    paths_to_check = [
-        os.path.join(os.path.dirname(__file__), "assets", filename),
-        os.path.join(os.path.dirname(__file__), filename),
-    ]
-    for path in paths_to_check:
-        if os.path.exists(path):
-            with open(path, "rb") as f:
-                return base64.b64encode(f.read()).decode("utf-8")
+    base_dir = os.path.dirname(__file__)
+    search_dirs = [os.path.join(base_dir, "assets"), base_dir]
+    
+    for d in search_dirs:
+        if os.path.exists(d):
+            for f in os.listdir(d):
+                if f.lower() == filename.lower():
+                    full_path = os.path.join(d, f)
+                    if os.path.isfile(full_path):
+                        with open(full_path, "rb") as file_obj:
+                            return base64.b64encode(file_obj.read()).decode("utf-8")
     return ""
 
 
@@ -495,7 +498,6 @@ if st.session_state["page"] == "contact":
     </style>
     """, unsafe_allow_html=True)
 
-    # 60% Width layout via [0.8, 2.4, 0.8] ratio
     col_center1, col_center2, col_center3 = st.columns([0.8, 2.4, 0.8])
     with col_center2:
         with st.form(key="solstone_contact_panel"):
@@ -564,7 +566,6 @@ elif st.session_state["page"] == "search_input":
     </style>
     """, unsafe_allow_html=True)
 
-    # 60% Width layout via [0.8, 2.4, 0.8] ratio
     col_center1, col_center2, col_center3 = st.columns([0.8, 2.4, 0.8])
     with col_center2:
         with st.form(key="solstone_search_panel"):
