@@ -220,20 +220,20 @@ st.markdown(
         word-break: break-word !important;
     }}
 
-    /* SOLID BLACK TEXT LABELS FOR PAGE 3 SUMMARY */
+    /* WHITE TEXT LABELS FOR PAGE 3 SUMMARY */
     .query-label {{
-        color: #000000 !important;
+        color: #FFFFFF !important;
         font-weight: 900 !important;
-        text-shadow: none !important;
+        text-shadow: 1px 1px 2px #000000 !important;
         text-decoration: underline !important;
         text-underline-offset: 2px !important;
         text-decoration-thickness: 2px !important;
     }}
     
     .query-divider {{
-        color: #000000 !important;
+        color: #FFFFFF !important;
         font-weight: 900 !important;
-        text-shadow: none !important;
+        text-shadow: 1px 1px 2px #000000 !important;
         margin: 0 6px !important;
     }}
 
