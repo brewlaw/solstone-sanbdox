@@ -151,7 +151,13 @@ st.markdown(
         margin-bottom: 8px !important;
     }}
 
-    div.stTextInput > label {{
+    /* Directly targets Streamlit's inner paragraph elements within form labels */
+    div.stTextInput label,
+    div.stTextInput label p,
+    div.stTextInput div[data-testid="stWidgetLabel"],
+    div.stTextInput div[data-testid="stWidgetLabel"] p,
+    label[data-testid="stWidgetLabel"],
+    label[data-testid="stWidgetLabel"] p {{
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         font-weight: 900 !important;
         font-size: 14px !important;
@@ -159,7 +165,7 @@ st.markdown(
         color: #FFFFFF !important;
         text-shadow: 
             2px 2px 0px #000000,
-            0px 0px 6px rgba(0, 0, 0, 0.95) !important;
+            0px 0px 8px rgba(0, 0, 0, 0.95) !important;
     }}
 
     div.stTextInput > div > div > input {{
