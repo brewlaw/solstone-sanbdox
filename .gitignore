@@ -10,3 +10,40 @@ env/
 # OS hidden files
 .DS_Store
 Thumbs.db
+
+# ============================================================
+# SOLSTONE REPO .GITIGNORE
+# ============================================================
+
+# 1. Credentials, Secrets & Keys (CRITICAL)
+credentials.json
+authorized_user.json
+*.pem
+*.key
+.env
+
+# 2. Large Database Files (>100MB)
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+data/states.db
+states.db
+
+# 3. Python Cache & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# 4. Local Audit Output & Temporary CSVS/Logs
+qa_audit_*.csv
+cross_reference_audit_report_*.csv
+gsheet_patch_actions_*.csv
+*.log
+
+# 5. OS Metadata
+.DS_Store
+Thumbs.db
