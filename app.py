@@ -48,8 +48,8 @@ st.markdown("""
     .license-card {
         border: 1px solid #334155;
         background-color: rgba(255, 255, 255, 0.03);
-        padding: 8px 12px; /* Minimized vertical padding */
-        margin-bottom: 4px; /* Minimized lines/gaps between boxes */
+        padding: 8px 12px;
+        margin-bottom: 4px;
         display: flex;
         flex-direction: column; 
         gap: 4px;
@@ -59,7 +59,6 @@ st.markdown("""
     
     .license-title { font-size: 1.0rem; font-weight: 700; margin-bottom: 0px; }
     .license-meta { font-size: 0.85rem; color: #94a3b8; margin-bottom: 2px; }
-    /* Force text to wrap to prevent scrolling */
     .license-endorsements { 
         font-size: 0.85rem; 
         line-height: 1.3; 
@@ -69,11 +68,27 @@ st.markdown("""
     }
     
     h1, h2, h3 { color: #0f172a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    
-    /* Ensure tables don't break layout on mobile */
     .stDataFrame { overflow-x: auto; }
 </style>
 """, unsafe_allow_html=True)
+
+# --- LOGO RESOLVER UTILITY ---
+def get_logo_path():
+    """Detects logo in assets/ or local root dynamically."""
+    candidates = [
+        os.path.join("assets", "solstone-logo.jpg"),
+        os.path.join("assets", "solstone-logo.png"),
+        os.path.join("assets", "logo.jpg"),
+        os.path.join("assets", "logo.png"),
+        "solstone-logo.jpg",
+        "solstone-logo.png",
+        "logo.jpg",
+        "logo.png"
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return None
 
 # --- FULL MOCK DATA: 3 EXAMPLE ENTITIES + 1 FREE FORM ---
 ENTITIES_DATA = {
@@ -177,7 +192,7 @@ ENTITIES_DATA = {
                 "id_num": "WDS-2020-0192",
                 "issued": "2020-11-04",
                 "expires": "2026-11-04",
-                "status": "RE চুক্তি DUE",
+                "status": "RENEWAL DUE",
                 "endorsements": "Direct-To-Consumer Common Carrier Interstate Fulfillment Authorization",
                 "context_tag": "LICENSE - WINERY DIRECT SHIPPER"
             }
@@ -317,8 +332,10 @@ def add_context_dialog():
 # SIDEBAR NAVIGATION
 # ==============================================================================
 with st.sidebar:
-    if os.path.exists("solstone-logo.jpg"):
-        st.image("solstone-logo.jpg", use_container_width=True)
+    # --- DYNAMIC LOGO DETECTION ---
+    logo_file = get_logo_path()
+    if logo_file:
+        st.image(logo_file, use_container_width=True)
     else:
         st.markdown("## ⬡ SOLSTONE")
     st.caption("LegalTech & Regulatory Operating System")
@@ -341,7 +358,7 @@ with st.sidebar:
         st.session_state.active_context = ENTITIES_DATA[selected_company]["default_context"].copy()
         st.rerun()
 
-    # Copilot Toggle
+    # RagnarBox Toggle Button
     btn_label = "✖ Close Solstone RagnarBox" if st.session_state.copilot_open else "✨ Launch Solstone RagnarBox"
     if st.button(btn_label, type="primary", use_container_width=True):
         st.session_state.copilot_open = not st.session_state.copilot_open
@@ -420,7 +437,7 @@ with col_h2:
 st.markdown("---")
 
 # ==============================================================================
-# MAIN CANVAS VS COPILOT SPLIT (Mobile responsive columns)
+# MAIN CANVAS VS RAGNARBOX SPLIT
 # ==============================================================================
 if st.session_state.copilot_open:
     col_workspace, col_chat = st.columns([1.3, 2.7], gap="large")
@@ -451,7 +468,6 @@ with col_workspace:
                     col_info, col_scope_action = st.columns([4, 1.2], gap="small")
                     
                     with col_info:
-                        # Minimal padding, wide rectangular box, enforced text wrapping
                         st.markdown(
                             f"""
                             <div class="license-card">
@@ -470,7 +486,7 @@ with col_workspace:
                         )
                     
                     with col_scope_action:
-                        st.write("") # Vertical alignment spacing
+                        st.write("")
                         btn_key = f"add_lic_scope_{idx}_{lic['id_num']}"
                         if st.button("➕ Add to Scope", key=btn_key, use_container_width=True):
                             juris_val = lic['jurisdiction'].split(' (')[0].upper()
@@ -488,7 +504,7 @@ with col_workspace:
                             if added_tags:
                                 st.toast(f"Injected into RagnarBox: {', '.join(added_tags)}")
                             else:
-                                st.toast("Parameters already active in RagnarBox scope.")
+                                st.toast("Parameters already active in scope.")
                             st.rerun()
 
     # --------------------------------------------------------------------------
@@ -712,7 +728,6 @@ if col_chat:
         st.markdown("### ✨ SOLSTONE RAGNARBOX")
         st.markdown("**Active Inquiry Context Scope:**")
         
-        # Explicit user guidance request
         st.caption(
             "The system is only considering these parameters. "
             "If you would like to also consider, e.g., laws relating to wine, TTB, another state, etc., "
